@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="anim_duration_medium">300</integer>
+    <integer name="anim_duration_long">400</integer>
+    <integer name="anim_duration_ex_long">700</integer>
+    <integer name="anim_fade_duration">400</integer>
+    <integer name="slide_animation_speed">600</integer>
+</resources>

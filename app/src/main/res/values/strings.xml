@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ToDoos</string>
+
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_login_button">Login</string>
+
+    <string name="login_error">Nope, try again if you like</string>
+
+    <string name="login_connecting">Waiting for your router to wake up&#8230;</string>
+
+
+</resources>
