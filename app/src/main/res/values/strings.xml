@@ -1,9 +1,50 @@
 <resources>
     <string name="app_name">ToDoos</string>
+    <string name="baseUrl">http://%s/api/</string>
 
+    <!-- Login -->
+    <string name="login_ip_title">Enter server information</string>
+    <string name="login_ip_server">Server Address</string>
+    <string name="login_ip_port">Port</string>
+    <string name="login_ip_save">Save</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
+    <string name="login_remember_device">Remember Device</string>
     <string name="login_login_button">Login</string>
+    <string name="login_demo_mode">Demo Mode</string>
+    <string name="login_login_create">Create Account</string>
+
+    <!-- Demo Mode -->
+    <string name="demo_mode_title">COMING S00N</string>
+    <string name="demo_mode_message">Demo mode does NOT use the api, instead it will load local storage to show off the User Interface features.\n\nEnjoy!..soon</string>
+
+    <!-- Create Account -->
+    <string name="create_user_title">Create new account</string>
+    <string name="create_username">Username</string>
+    <string name="create_email">Email address</string>
+    <string name="create_password">Password</string>
+    <string name="create_confirm_pass">Confirm Password</string>
+
+    <!-- Home -->
+    <string name="fab_completed">Completed</string>
+    <string name="fab_add">Add</string>
+
+
+    <!--Errors -->
+    <string name="error_invalid_ip">Please ensure ip address is valid</string>
+    <string name="error_invalid_email">Please ensure that is a valid email address</string>
+    <string name="error_empty_fields">Please ensure all fields are filled out</string>
+    <string name="error_passwords_mismatch">Please ensure passwords are the same</string>
+    <string name="error_account_exist">Account already exist</string>
+    <string name="error_account_login_fail">Login Failed</string>
+    <string name="error_user_api_fail">Failed to retrieve user information</string>
+
+    <!-- Toasts -->
+    <string name="toast_account_created">Account Successfully Created</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
 
     <string name="login_error">Nope, try again if you like</string>
 

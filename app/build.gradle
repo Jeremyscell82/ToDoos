@@ -59,6 +59,7 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.afollestad.material-dialogs:input:3.3.0'
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:3.0.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
