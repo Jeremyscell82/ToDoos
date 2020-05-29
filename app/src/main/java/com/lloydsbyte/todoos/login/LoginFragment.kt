@@ -23,7 +23,13 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.card_ip_config.*
 import kotlinx.android.synthetic.main.card_ip_config.view.*
 import kotlinx.android.synthetic.main.card_login.*
+import kotlinx.android.synthetic.main.card_login.login_button
+import kotlinx.android.synthetic.main.card_login.login_email
 import kotlinx.android.synthetic.main.card_login.login_error
+import kotlinx.android.synthetic.main.card_login.login_flip_fab
+import kotlinx.android.synthetic.main.card_login.login_password
+import kotlinx.android.synthetic.main.card_login.login_remember_device
+import kotlinx.android.synthetic.main.card_login.view.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import timber.log.Timber
@@ -104,15 +110,33 @@ class LoginFragment : Fragment() {
                     login_flip_view.visibility = View.VISIBLE
                 }
             }, 600)
+
+            //Restore from shared preferences on first run only
+            if (savedInstanceState == null) {
+                val storedAddress = SharedPref_Controller(requireContext()).getServerAddress().split(":")
+                if (storedAddress.size > 1) {
+                    //Load up the viewmodel, onResume sets the view's texts
+                    loginViewModel.address = storedAddress[0]
+                    loginViewModel.port = storedAddress[1]
+                    login_ip_save_button.setText(R.string.login_ip_continue)
+                }
+                val deviceId = SharedPref_Controller(requireContext()).getDeviceId().split(":")
+                if (deviceId.size > 1) {
+                    //Load up the viewmode, onResume sets the view's texts
+                    loginViewModel.email = deviceId[0]
+                    loginViewModel.password = deviceId[1]
+                    login_remember_device.isChecked = true
+                }
+            }
         }
-        Timber.d("JL_ oncreate view ran ${loginViewModel.address}")
 
     }
 
     override fun onResume() {
         super.onResume()
         Timber.d("JL_ on resume running")
-        create_button.visibility = if (loginViewModel.address.isNotEmpty()) View.VISIBLE else View.INVISIBLE
+        create_button.visibility =
+            if (loginViewModel.address.isNotEmpty()) View.VISIBLE else View.INVISIBLE
         login_ip_address.setText(loginViewModel.address)
         login_ip_port.setText(loginViewModel.port)
         login_email.setText(loginViewModel.email)
@@ -197,6 +221,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun getUserInfo(userId: String) {
+        //Save user credentials if 'Remember Device' is checked
+        rememberDevice(wipe = !login_remember_device.isChecked)
         userDisposable = userApiService.getUser(
             token = mainViewModel.token!!,
             endpoint = NetworkConstants.usersEndpoint + userId
@@ -218,6 +244,11 @@ class LoginFragment : Fragment() {
                     showErrorMessage(resources.getString(R.string.error_user_api_fail))
                 }
             )
+    }
+
+    private fun rememberDevice(wipe: Boolean) {
+        val deviceId = if (wipe) "" else "${login_email.text.toString()}:${login_password.text.toString()}"
+        SharedPref_Controller(requireContext()).rememberDevice(deviceId)
     }
 
     private fun launchApp(demoMode: Boolean) {

@@ -7,6 +7,7 @@
     <string name="login_ip_server">Server Address</string>
     <string name="login_ip_port">Port</string>
     <string name="login_ip_save">Save</string>
+    <string name="login_ip_continue">Continue</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_remember_device">Remember Device</string>

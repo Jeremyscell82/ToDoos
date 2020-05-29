@@ -30,7 +30,7 @@ class NavController(val sfm: FragmentTransaction) {
                 Timber.d("JL_ launching home screen")
                 fragmentToLaunch = HomeFragment()
                 animationKey = FragmentAnimations.ANIMATION_KEY.FADE_IN
-                addToStack = true
+//                addToStack = true
             }
             NavAction.SETTINGS -> {
                 Timber.d("JL_ launching settings screen")

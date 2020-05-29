@@ -9,8 +9,9 @@ class SharedPref_Controller(val context: Context) {
     private val GLOBAL_KEY = "com.lloydsbyte.todoos.stored_prefs"
     //Individual Keys
     private val SERVER_ADDRESS = "server_address.todoos"
-
+    private val DEVICE_ID = "device_id.todoos"
     private val LAST_DOWNLOADED = "last_downloaded.todoos"
+
 
 
     val sharedPref: SharedPreferences = context.getSharedPreferences(GLOBAL_KEY, PRIVATE_MODE)
@@ -28,6 +29,12 @@ class SharedPref_Controller(val context: Context) {
         return readString(SERVER_ADDRESS)
     }
 
+    fun rememberDevice(deviceId: String){
+        writeString(DEVICE_ID, deviceId)
+    }
+    fun getDeviceId(): String {
+        return readString(DEVICE_ID)
+    }
 
 
     //Used for HomeFragment to check when was the last time it synced (updates if an hour outdated)
