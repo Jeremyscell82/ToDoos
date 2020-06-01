@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/primaryTextColor</item>
+        <item name="colorControlNormal">@color/primaryTextColor</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
@@ -26,6 +27,11 @@
         <item name="android:background">@drawable/background_create_acct</item>
     </style>
 
+    <style name="bottomsheet_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="TextInputField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@android:color/transparent</item>
         <item name="boxCornerRadiusTopStart">@dimen/default_card_corners</item>
@@ -40,6 +46,7 @@
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:textColorHint">@color/primaryTextColor</item>
         <item name="helperTextTextColor">@color/primaryTextColor</item>
+        <item name="colorControlActivated">@color/primaryTextColor</item>
     </style>
 
     <!-- Make a textview look like a rounded button-->
@@ -49,7 +56,7 @@
         <item name="android:minHeight">60dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/primaryDarkColor</item>
-        <item name="android:padding">@dimen/default_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
         <item name="android:background">@drawable/background_rounded_button</item>
         <item name="android:focusable">true</item>
@@ -83,6 +90,22 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/grayText</item>
         <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
+    <style name="font_footer_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
+    <style name="font_clickable_fab_buttons">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grayText</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <style name="font_error">

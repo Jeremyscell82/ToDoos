@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_account_bottom_sheet"
+    style="@style/bottomsheet_style"
+    app:cardCornerRadius="@dimen/bottomsheet_corners"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_create_acct"
+            android:minHeight="600dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/center_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/todoo_save_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:src="@drawable/ic_check"
+                app:backgroundTint="@color/primaryColor"
+                app:fabSize="mini"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/primaryTextColor"
+                app:tint="@color/primaryTextColor" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/todoo_close_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:src="@drawable/ic_close"
+                app:backgroundTint="@color/primaryColor"
+                app:fabSize="mini"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/primaryTextColor"
+                app:tint="@color/primaryTextColor" />
+
+
+            <TextView
+                android:id="@+id/todoo_error"
+                style="@style/font_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/todoo_save_fab"
+                app:layout_constraintEnd_toStartOf="@id/todoo_save_fab"
+                app:layout_constraintStart_toEndOf="@id/todoo_close_fab"
+                app:layout_constraintTop_toTopOf="@id/todoo_save_fab" />
+
+
+            <TextView
+                android:id="@+id/todoo_date"
+                style="@style/font_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding"
+                android:text="Date: 12-12-2002"
+                app:layout_constraintTop_toBottomOf="@id/todoo_close_fab" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/todoo_title_layout"
+                style="@style/TextInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding"
+                android:background="@drawable/backrgound_inputfield"
+                android:hint="@string/todoo_title"
+                android:theme="@style/TextInputField"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/todoo_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/todoo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text|textCapWords"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/todoo_description_card"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="@dimen/default_margin"
+                app:cardCornerRadius="@dimen/default_card_corners"
+                app:cardElevation="@dimen/cardview_default_elevation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/todoo_title_layout">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_padding"
+                    android:hint="@string/todoo_desc"
+                    android:theme="@style/TextInputField"
+                    app:boxBackgroundMode="none">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/todoo_desc_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:imeOptions="actionNext"
+                        android:inputType="text|textCapSentences"
+                        android:overScrollMode="ifContentScrolls"
+                        android:textColor="@color/secondaryTextColor"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/todoo_url_layout"
+                style="@style/TextInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_padding"
+                android:hint="@string/todoo_url"
+                android:theme="@style/TextInputField"
+                app:layout_constraintTop_toBottomOf="@id/todoo_description_card"
+                android:background="@drawable/backrgound_inputfield"
+                app:boxStrokeWidth="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/todoo_url_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textCapWords"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/todoo_completed_card_button"
+                style="@style/make_clickable"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_margin="@dimen/default_margin"
+                app:cardCornerRadius="@dimen/default_card_corners"
+                app:cardElevation="@dimen/default_button_elevation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/todoo_url_layout">
+
+                <TextView
+                    style="@style/font_todo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="56dp"
+                    android:text="@string/button_completed" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/todoo_completed_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="@dimen/default_padding"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@drawable/ic_check"
+                    app:backgroundTint="@color/primaryColor"
+                    app:elevation="0dp"
+                    app:fabSize="mini"
+                    app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                    app:rippleColor="@color/primaryTextColor"
+                    app:tint="@color/primaryTextColor" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/todoo_delete_card_button"
+                style="@style/make_clickable"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_margin="48dp"
+                app:cardCornerRadius="@dimen/default_card_corners"
+                app:cardElevation="@dimen/default_button_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/todoo_completed_card_button">
+
+                <TextView
+                    style="@style/font_todo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:gravity="center"
+                    android:text="@string/todoo_delete"
+                    android:textColor="@color/ErrorTextColor" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/todoo_local_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/font_footer_text"
+                android:textColor="@color/primaryTextColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/center_guideline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="local id: 000"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/todoo_cloud_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/font_footer_text"
+                android:textColor="@color/primaryTextColor"
+                app:layout_constraintStart_toEndOf="@id/center_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="cloud id: 000"
+                android:gravity="center"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.cardview.widget.CardView>

@@ -1,5 +1,6 @@
 package com.lloydsbyte.todoos.login
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lloydsbyte.todoos.R
-import com.lloydsbyte.todoos.network.CreateAcctApiService
+import com.lloydsbyte.todoos.utilz.network.CreateAcctApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_bs_create_acct.*
-import kotlinx.android.synthetic.main.fragment_bs_create_acct.view.*
+import kotlinx.android.synthetic.main.bottomsheet_create_acct.*
+import kotlinx.android.synthetic.main.bottomsheet_create_acct.view.*
 import timber.log.Timber
 
 
@@ -28,14 +29,14 @@ class CreateAcctBottomSheet: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_bs_create_acct, container, false)
+        return inflater.inflate(R.layout.bottomsheet_create_acct, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
-            create_acct_close_fab.setOnClickListener {
+            todoo_close_fab.setOnClickListener {
                 dismiss()
             }
             create_account_button.setOnClickListener {
@@ -81,7 +82,7 @@ class CreateAcctBottomSheet: BottomSheetDialogFragment() {
         val email = create_email.text.toString()
         val password = create_password.text.toString()
         connecting(true)
-
+        dialog?.setCancelable(false)
         creationDisposable = createAccountService.createUser(
             CreateAcctApiService.ApiModel(
                 realm = "string",
@@ -95,12 +96,14 @@ class CreateAcctBottomSheet: BottomSheetDialogFragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
+                    dialog?.setCancelable(true)
                     Timber.d("JL_ success: ${result.userId}")
                     connecting(false)
                     Toast.makeText(requireContext(), resources.getString(R.string.toast_account_created), Toast.LENGTH_LONG).show()
                     dismissDialog()
                 },
                 { error ->
+                    dialog?.setCancelable(true)
                     val errorMsg = error.message?:""
                     if (errorMsg.contains("HTTP 422")){
                         //This account already exist error
@@ -115,8 +118,10 @@ class CreateAcctBottomSheet: BottomSheetDialogFragment() {
         this.dialog?.dismiss()
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
         creationDisposable?.dispose()
     }
+
+
 }

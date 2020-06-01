@@ -1,4 +1,4 @@
-package com.lloydsbyte.todoos.home
+package com.lloydsbyte.todoos.utilz.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,17 +7,17 @@ import androidx.room.PrimaryKey
 //Used in conjunction with RoomDB
 
 @Entity
-data class TodoItemModel(
+data class TodooModel(
     @PrimaryKey(autoGenerate = true)
-    val dbKey: Int,
+    var dbKey: Int,
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
     @ColumnInfo(name = "description")
-    val description: String,
+    var description: String,
     @ColumnInfo(name = "completed")
-    val completed: Boolean,
+    var completed: Boolean,
     @ColumnInfo(name = "url")
-    val url: String,
+    var url: String,
     @ColumnInfo(name = "id")
-    val cloudId: String
+    var cloudId: String
 )

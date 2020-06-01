@@ -42,14 +42,16 @@
                 android:layout_marginTop="@dimen/default_large_margin"
                 android:layout_marginEnd="@dimen/default_margin"
                 android:hint="@string/login_email"
-                android:theme="@style/TextInputField">
+                android:theme="@style/TextInputField"
+                android:background="@drawable/backrgound_inputfield"
+                app:boxStrokeWidth="0dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text|textCapWords"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="18sp" />
 
@@ -64,7 +66,9 @@
                 android:layout_marginTop="@dimen/default_large_margin"
                 android:layout_marginEnd="@dimen/default_margin"
                 android:hint="@string/login_password"
-                android:theme="@style/TextInputField">
+                android:theme="@style/TextInputField"
+                android:background="@drawable/backrgound_inputfield"
+                app:boxStrokeWidth="0dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_password"

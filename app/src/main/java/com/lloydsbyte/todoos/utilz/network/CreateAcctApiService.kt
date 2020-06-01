@@ -1,4 +1,4 @@
-package com.lloydsbyte.todoos.network
+package com.lloydsbyte.todoos.utilz.network
 
 import android.content.Context
 import com.google.gson.annotations.SerializedName

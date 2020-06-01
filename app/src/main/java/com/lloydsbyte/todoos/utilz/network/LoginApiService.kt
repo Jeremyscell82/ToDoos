@@ -1,4 +1,4 @@
-package com.lloydsbyte.todoos.network
+package com.lloydsbyte.todoos.utilz.network
 
 import android.content.Context
 import com.google.gson.annotations.SerializedName
@@ -7,42 +7,34 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-class ToDoosApiService {
+class LoginApiService {
 
-    data class ApiResult(
+    data class ApiLoginResult(
         @SerializedName("id")
-        val cloudId: String,
-        @SerializedName("user")
-        val userId: String,
-        @SerializedName("title")
-        val title: String,
-        @SerializedName("description")
-        val description: String,
-        @SerializedName("completed")
-        val completed: Boolean,
-        @SerializedName("url")
-        val url: String
-        )
+        val token: String,
+        @SerializedName("ttl")
+        val ttl: Int, //May not need
+        @SerializedName("created")
+        val created: String,
+        @SerializedName("userId")
+        val userId: String
+    )
+
 
     interface ApiService {
 
-        //Get All ToDoos
-        @GET("todo/")
-        fun getAllTodoos(): Observable<List<ApiResult>>
-
-        //Post a new Todo
         @Headers("Content-Type: application/json")
-        @POST("todo/")
-        fun postTodo(
+        @POST("Users/login")
+        fun loginUser(
             @Body params: Map<String, String>
-        ): Observable<ApiResult>
+        ): Observable<ApiLoginResult>
 
         companion object {
-            fun create(context: Context): ApiService {
+            //Todo consolidate the following... soon
+            fun createLoginService(context: Context): ApiService {
                 val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
@@ -51,5 +43,6 @@ class ToDoosApiService {
                 return retrofit.create(ApiService::class.java)
             }
         }
+
     }
 }

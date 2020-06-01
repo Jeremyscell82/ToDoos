@@ -1,10 +1,10 @@
 package com.lloydsbyte.todoos
 
 import androidx.lifecycle.ViewModel
-import com.lloydsbyte.todoos.database.AppDatabase
-import com.lloydsbyte.todoos.home.TodoItemModel
+import com.lloydsbyte.todoos.utilz.database.AppDatabase
+import com.lloydsbyte.todoos.utilz.database.TodooModel
 import com.lloydsbyte.todoos.login.UserApiService
-import com.lloydsbyte.todoos.network.LoginApiService
+import com.lloydsbyte.todoos.utilz.network.LoginApiService
 import io.reactivex.Flowable
 
 class MainViewModel: ViewModel() {
@@ -17,6 +17,13 @@ class MainViewModel: ViewModel() {
     var username: String? = null
     var email: String? = null
     var emailVerified: Boolean = false
+    var todooList: List<TodooModel> = emptyList()
+    var showingCompleted: Boolean = false
+
+
+    fun genTodoosEndpoint():String {
+        return "{\"where\":{\"user\":\"$userId\"}}"
+    }
 
     fun populateFromLoginResponse(result: LoginApiService.ApiLoginResult){
         this.token = result.token
@@ -29,12 +36,24 @@ class MainViewModel: ViewModel() {
         this.emailVerified = result.emailVerified
     }
 
+    fun getTodoos(appDatabase: AppDatabase, completed: Boolean): Flowable<List<TodooModel>> {
+        return if (completed){
+            getCompletedTodoos(appDatabase)
+        } else {
+            getActiveTodoos(appDatabase)
+        }
+    }
+
+    fun getAllTodoos(appDatabase: AppDatabase): Flowable<List<TodooModel>> {
+        return appDatabase.ToDoosDao().getAllTodoos()
+    }
+
     //Home Todo Observables
-    fun getActiveTodoos(appDatabase: AppDatabase): Flowable<List<TodoItemModel>>{
+    fun getActiveTodoos(appDatabase: AppDatabase): Flowable<List<TodooModel>>{
         return appDatabase.ToDoosDao().getAllActiveToDoos()
     }
 
-    fun getCompletedTodoos(appDatabase: AppDatabase): Flowable<List<TodoItemModel>>{
+    fun getCompletedTodoos(appDatabase: AppDatabase): Flowable<List<TodooModel>>{
         return appDatabase.ToDoosDao().getAllCompleted()
     }
 

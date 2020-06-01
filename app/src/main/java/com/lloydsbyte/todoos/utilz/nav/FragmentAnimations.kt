@@ -1,4 +1,4 @@
-package com.lloydsbyte.todoos.nav
+package com.lloydsbyte.todoos.utilz.nav
 
 import androidx.fragment.app.FragmentTransaction
 import com.lloydsbyte.todoos.R

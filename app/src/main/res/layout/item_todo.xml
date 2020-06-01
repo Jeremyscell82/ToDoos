@@ -2,17 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/default_padding">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_todo_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="@dimen/default_card_corners"
         app:cardElevation="@dimen/default_card_elevation"
+        app:cardBackgroundColor="@color/primaryTextColor"
         android:layout_margin="@dimen/default_margin">
 
         <TextView
@@ -25,7 +28,7 @@
             android:text="test" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/item_todo_done_fab"
+            android:id="@+id/item_todo_completed_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fabSize="mini"

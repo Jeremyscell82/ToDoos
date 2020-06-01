@@ -12,9 +12,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.lloydsbyte.todoos.MainActivity
 import com.lloydsbyte.todoos.MainViewModel
 import com.lloydsbyte.todoos.R
-import com.lloydsbyte.todoos.nav.NavController
-import com.lloydsbyte.todoos.network.LoginApiService
-import com.lloydsbyte.todoos.network.NetworkConstants
+import com.lloydsbyte.todoos.utilz.nav.NavController
+import com.lloydsbyte.todoos.utilz.network.LoginApiService
+import com.lloydsbyte.todoos.utilz.network.NetworkConstants
 import com.lloydsbyte.todoos.utilz.RevealViewAnimator
 import com.lloydsbyte.todoos.utilz.SharedPref_Controller
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,11 +22,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.card_ip_config.*
 import kotlinx.android.synthetic.main.card_ip_config.view.*
-import kotlinx.android.synthetic.main.card_login.*
-import kotlinx.android.synthetic.main.card_login.login_button
 import kotlinx.android.synthetic.main.card_login.login_email
 import kotlinx.android.synthetic.main.card_login.login_error
-import kotlinx.android.synthetic.main.card_login.login_flip_fab
 import kotlinx.android.synthetic.main.card_login.login_password
 import kotlinx.android.synthetic.main.card_login.login_remember_device
 import kotlinx.android.synthetic.main.card_login.view.*
@@ -65,13 +62,9 @@ class LoginFragment : Fragment() {
         view.apply {
             //For quick entry in development
             login_ip_title.setOnLongClickListener {
-                login_ip_address.setText("75.70.179.231")
-                login_ip_port.setText("8282")
-                //TODO JL_ DELETE
-                login_email.setText("jeremysdev82@gmail.com")
-                login_password.setText("0000")
+                login_ip_address.setText(NetworkConstants.SERVER_IP)
+                login_ip_port.setText(NetworkConstants.PORT)
                 loginViewModel.address = login_ip_address.text.toString()
-                Timber.d("JL_ ${loginViewModel.address}")
                 loginViewModel.port = login_ip_port.text.toString()
                 loginViewModel.email = login_email.text.toString()
                 loginViewModel.password = login_password.text.toString()
@@ -91,6 +84,7 @@ class LoginFragment : Fragment() {
             login_button.setOnClickListener {
                 loginUser()
             }
+            //Todo need to design demo mode...
             demo_button.setOnClickListener {
                 showDemoModeWarning()
             }
@@ -278,5 +272,9 @@ class LoginFragment : Fragment() {
         login_error.visibility = View.VISIBLE
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        loginDisposable?.dispose()
+        userDisposable?.dispose()
+    }
 }

@@ -36,6 +36,10 @@ class SharedPref_Controller(val context: Context) {
         return readString(DEVICE_ID)
     }
 
+    fun deleteAllStoredPrefs(){
+        clearAllValues()
+    }
+
 
     //Used for HomeFragment to check when was the last time it synced (updates if an hour outdated)
     fun checkIfConfigured(): Boolean {
@@ -84,6 +88,12 @@ class SharedPref_Controller(val context: Context) {
         val editor = sharedPref.edit()
         editor.putLong(key, value)
         editor.apply()
+    }
+
+    private fun clearAllValues(){
+        val editor = sharedPref.edit()
+        editor.clear()
+        editor.commit()
     }
 
 }

@@ -1,10 +1,11 @@
-package com.lloydsbyte.todoos.nav
+package com.lloydsbyte.todoos.utilz.nav
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.lloydsbyte.todoos.*
 import com.lloydsbyte.todoos.home.HomeFragment
 import com.lloydsbyte.todoos.login.LoginFragment
+import com.lloydsbyte.todoos.settings.SettingsFragment
 import timber.log.Timber
 
 class NavController(val sfm: FragmentTransaction) {
@@ -34,8 +35,9 @@ class NavController(val sfm: FragmentTransaction) {
             }
             NavAction.SETTINGS -> {
                 Timber.d("JL_ launching settings screen")
-                fragmentToLaunch = SettingsFragment()
-                animationKey = FragmentAnimations.ANIMATION_KEY.NO_ANIM
+                fragmentToLaunch =
+                    SettingsFragment()
+                animationKey = FragmentAnimations.ANIMATION_KEY.SLIDE_IN_FROM_LEFT
                 addToStack = true
             }
         }

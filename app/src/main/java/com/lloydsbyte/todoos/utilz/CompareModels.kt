@@ -1,10 +1,10 @@
 package com.lloydsbyte.todoos.utilz
 
-import com.lloydsbyte.todoos.home.TodoItemModel
+import com.lloydsbyte.todoos.utilz.database.TodooModel
 
 class CompareModels {
     companion object {
-        fun compareTodoos(list1: List<TodoItemModel>, list2: List<TodoItemModel>): Boolean {
+        fun compareTodoos(list1: List<TodooModel>, list2: List<TodooModel>): Boolean {
             if (list1.size != list2.size)
                 return false
 

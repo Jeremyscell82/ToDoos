@@ -6,16 +6,17 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.lloydsbyte.todoos.R
+import com.lloydsbyte.todoos.utilz.database.TodooModel
 import com.lloydsbyte.todoos.utilz.CompareModels
 import kotlinx.android.synthetic.main.item_todo.view.*
 import timber.log.Timber
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
-    var adapterItems: List<TodoItemModel> = emptyList()
-    var onItemClicked: ((TodoItemModel) -> Unit)? = null
+    var adapterItems: List<TodooModel> = emptyList()
+    var onItemClicked: ((TodooModel) -> Unit)? = null
 
-    fun updateAdapter(articles: List<TodoItemModel>, recyclerView: RecyclerView, animate: Boolean) {
+    fun updateAdapter(articles: List<TodooModel>, recyclerView: RecyclerView, animate: Boolean) {
         if (!CompareModels.compareTodoos(adapterItems, articles)) {
             Timber.d("JL_ updating the android adapter")
             adapterItems = articles
@@ -45,15 +46,16 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
 
     inner class HomeViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(todo: TodoItemModel){
+        fun bind(todo: TodooModel){
             itemView.apply {
                 item_todo_card.setOnClickListener {
                     onItemClicked?.invoke(todo)
                 }
                 item_todo_title.text = todo.title
-                item_todo_done_fab.setOnClickListener {
+                item_todo_completed_fab.setOnClickListener {
 
                 }
+                if (todo.completed)item_todo_completed_fab.show() else item_todo_completed_fab.hide()
             }
         }
     }

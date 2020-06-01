@@ -2,8 +2,7 @@ package com.lloydsbyte.todoos.login
 
 import android.content.Context
 import com.google.gson.annotations.SerializedName
-import com.lloydsbyte.todoos.network.LoginApiService
-import com.lloydsbyte.todoos.network.NetworkConstants
+import com.lloydsbyte.todoos.utilz.network.NetworkConstants
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

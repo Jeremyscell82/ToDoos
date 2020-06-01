@@ -7,8 +7,10 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="ErrorTextColor">#D32F2F</color>
     <color name="primaryTextColor">#ffffff</color>
+    <color name="primaryLightTextColor">#C8C8C8</color>
     <color name="secondaryTextColor">#151515</color>
     <color name="grayText">#4F4F4F</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="shadow">#41000000</color>
 </resources>

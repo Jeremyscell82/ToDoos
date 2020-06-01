@@ -2,11 +2,12 @@
     <string name="app_name">ToDoos</string>
     <string name="baseUrl">http://%s/api/</string>
 
+
+
     <!-- Login -->
     <string name="login_ip_title">Enter server information</string>
     <string name="login_ip_server">Server Address</string>
     <string name="login_ip_port">Port</string>
-    <string name="login_ip_save">Save</string>
     <string name="login_ip_continue">Continue</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
@@ -26,10 +27,27 @@
     <string name="create_password">Password</string>
     <string name="create_confirm_pass">Confirm Password</string>
 
-    <!-- Home -->
-    <string name="fab_completed">Completed</string>
-    <string name="fab_add">Add</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+
+    <!-- Generic -->
+    <string name="button_save">Save</string>
+    <string name="button_completed">Completed</string>
+    <string name="button_completed_active">Active</string>
+    <string name="button_add">Add</string>
+
+
+
+    <!-- Todoo -->
+    <string name="todoo_title">Title</string>
+    <string name="todoo_desc">Description</string>
+    <string name="todoo_url">Url</string>
+    <string name="todoo_user">User</string>
+    <string name="todoo_id">id</string>
+    <string name="todoo_delete">Delete</string>
+    <string name="todoo_local_id">local id: %d</string>
+    <string name="todoo_cloud_id">cloud id: %s</string>
 
     <!--Errors -->
     <string name="error_invalid_ip">Please ensure ip address is valid</string>
@@ -39,6 +57,7 @@
     <string name="error_account_exist">Account already exist</string>
     <string name="error_account_login_fail">Login Failed</string>
     <string name="error_user_api_fail">Failed to retrieve user information</string>
+    <string name="error_todoo_title">Title cannot be empty</string>
 
     <!-- Toasts -->
     <string name="toast_account_created">Account Successfully Created</string>

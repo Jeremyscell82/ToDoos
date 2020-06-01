@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.lloydsbyte.todoos.nav.NavController
+import com.lloydsbyte.todoos.utilz.nav.NavController
 import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
@@ -15,8 +15,6 @@ class SplashActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
         Timber.d("JL_ Splash has started....")
         Handler().postDelayed({
-//            setContentView(R.layout.activity_main)
-//            launchLoginFragment()
             launchApp()
         }, 1000)
     }
