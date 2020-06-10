@@ -16,11 +16,9 @@ class NetworkConstants {
             return url
         }
         //Todo Replace with your values
-        val SERVER_IP = "75.70.179.231"
-        val SERVER_WEB_ADDRESS = "nextcloud.lloydsbyte.com"
+        val SERVER_IP = "00.00.0.000"
+        val SERVER_WEB_ADDRESS = "example.com"
         val PORT = "8282"
-        //User this vs baseUrl
-        val internalUrl: String = "http://192.168.1.169:8282/api/"
         val usersEndpoint: String = "Users/"
     }
 }
