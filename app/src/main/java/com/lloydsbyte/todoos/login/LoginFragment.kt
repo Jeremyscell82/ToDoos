@@ -205,7 +205,7 @@ class LoginFragment : Fragment() {
                     { error ->
                         Timber.d("JL_ login failed ${error.message}")
                         connecting(false)
-                        showErrorMessage(resources.getString(R.string.error_account_login_fail))
+                        showErrorMessage(resources.getString(R.string.error_account_login_fail, error.message))
                     }
                 )
         } else {

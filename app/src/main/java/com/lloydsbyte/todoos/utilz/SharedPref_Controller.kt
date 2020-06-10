@@ -2,6 +2,7 @@ package com.lloydsbyte.todoos.utilz
 
 import android.content.Context
 import android.content.SharedPreferences
+import timber.log.Timber
 
 class SharedPref_Controller(val context: Context) {
 
@@ -26,7 +27,9 @@ class SharedPref_Controller(val context: Context) {
     }
 
     fun getServerAddress():String {
-        return readString(SERVER_ADDRESS)
+        val address = readString(SERVER_ADDRESS)
+        Timber.d("JL_ address is: $address")
+        return  address
     }
 
     fun rememberDevice(deviceId: String){
